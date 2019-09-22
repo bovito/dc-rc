@@ -9,3 +9,16 @@ before_install:
 
 script:
   - docker run -e CI=true bovito/dc-rc npm run test -- --coverage
+
+deploy:
+  provider: elsticbeanstalk
+  region: "eu-north-1"
+  app: "dc_rc"
+  env: "DcRc-env"
+  bucket_name: "elasticbeanstalk-eu-north-1-109106504215"
+  bucket_path: "dc_rc"
+  on:
+    branch: master
+  access_key_id: $ACCESS_KEY
+  secret_access_key:
+    secure: "$SECRET_KEY"
