@@ -1,11 +1,12 @@
+sudo: required
 language: node_js
 node_js:
   - "7"
-sudo: required
+
 services:
   - docker
 before_install:
   - npm install
-  - docker build -t bovito/dc-rc -f Dockerfile.dev
+  - docker build -t bovito/dc-rc -f Dockerfile.dev .
 script:
   - docker run -e CI=true bovito/dc-rc npm run test -- --coverage
