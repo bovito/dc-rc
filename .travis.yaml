@@ -7,6 +7,6 @@ services:
   - docker
 before_install:
   - npm install
-  - docker build -t bovito/dc-rc -f Dockerfile.dev .
+  - docker build -t test -f Dockerfile.dev .
 script:
-  - docker run -e CI=true bovito/dc-rc npm run test -- --coverage
+  - docker run -e CI=true test npm run test -- --coverage
